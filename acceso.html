@@ -110,28 +110,41 @@
             cursor: not-allowed;
         }
         
-        .warning {
-            background: rgba(255, 193, 7, 0.1);
-            border: 1px solid rgba(255, 193, 7, 0.3);
+        .info {
+            background: rgba(33, 150, 243, 0.1);
+            border: 1px solid rgba(33, 150, 243, 0.3);
             border-radius: 12px;
             padding: 20px;
-            color: #ffc107;
+            color: #64b5f6;
             font-size: 14px;
             line-height: 1.6;
             margin-top: 20px;
+            text-align: left;
         }
         
-        .warning strong {
+        .info strong {
             display: block;
             margin-bottom: 10px;
+            color: #90caf9;
         }
         
-        .code {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 12px;
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        
+        .status.checking {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            color: #ffc107;
+        }
+        
+        .status.ready {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #81c784;
         }
     </style>
 </head>
@@ -158,57 +171,118 @@
                 </div>
             </div>
             
-            <button class="linkedin-btn" id="linkedin-btn" disabled>
+            <button class="linkedin-btn" id="linkedin-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
-                Configuración requerida
+                <span id="btn-text">Continuar con LinkedIn</span>
             </button>
             
-            <div class="warning">
-                <strong>⚠️ Configuración Necesaria</strong>
-                <p>Para que LinkedIn OAuth funcione, necesitas:</p>
-                <br>
-                <p><strong>1. Redirect URI correcto:</strong></p>
-                <p>En LinkedIn Developers, configura:<br>
-                <span class="code">https://tu-dominio.com/callback.html</span></p>
-                <br>
-                <p><strong>2. Backend para intercambio:</strong></p>
-                <p>Necesitas un servidor (Node.js, Python, PHP) o usar un servicio como Firebase Functions para intercambiar el código por el access token de forma segura.</p>
-                <br>
-                <p><strong>3. Client Secret seguro:</strong></p>
-                <p>NUNCA expongas tu Client Secret en JavaScript del frontend.</p>
+            <div class="status checking" id="status">
+                ⏳ Verificando configuración...
+            </div>
+            
+            <div class="info">
+                <strong>📍 URL actual detectada:</strong>
+                <p id="current-url" style="word-break: break-all; color: #90caf9; margin-top: 5px;"></p>
+                
+                <strong style="margin-top: 15px;">✅ Esta URL debe estar en LinkedIn Developers</strong>
+                <p style="margin-top: 5px;">
+                    Ve a: <a href="https://www.linkedin.com/developers/apps" target="_blank" style="color: #90caf9;">LinkedIn Developers</a><br>
+                    → Tu App → Settings → OAuth 2.0 settings<br>
+                    → Redirect URLs
+                </p>
             </div>
         </div>
     </div>
     
     <script>
-        // ⚠️ ESTE CÓDIGO NO FUNCIONARÁ HASTA QUE CONFIGURES CORRECTAMENTE
-        
+        // 🔧 CONFIGURACIÓN AUTOMÁTICA
         const CONFIG = {
-            // Tu LinkedIn Client ID
             CLIENT_ID: '78dtq4astfn7fg',
             
-            // 🔴 INCORRECTO: No puedes usar Google Apps Script como redirect_uri
-            // LinkedIn necesita redirigir a una página HTML de TU dominio
-            REDIRECT_URI: 'https://tu-dominio.com/callback.html',  // ✅ Cambiar a TU dominio
+            // 🌐 Detectar automáticamente la URL base
+            getBaseUrl: function() {
+                const protocol = window.location.protocol;
+                const host = window.location.host;
+                const pathname = window.location.pathname;
+                
+                // Si está en una subcarpeta (ej: /PRUEBA22/), incluirla
+                const pathParts = pathname.split('/').filter(p => p);
+                const basePath = pathParts.length > 0 && !pathname.endsWith('.html') 
+                    ? '/' + pathParts[0] 
+                    : '';
+                
+                return `${protocol}//${host}${basePath}`;
+            },
+            
+            get REDIRECT_URI() {
+                return this.getBaseUrl() + '/callback.html';
+            },
             
             SCOPE: 'openid profile email'
         };
         
+        // Mostrar URL actual y redirect URI
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUrl = CONFIG.getBaseUrl();
+            const redirectUri = CONFIG.REDIRECT_URI;
+            
+            document.getElementById('current-url').textContent = redirectUri;
+            
+            // Verificar si estamos en localhost o en producción
+            const isLocalhost = window.location.hostname === 'localhost' || 
+                               window.location.hostname === '127.0.0.1';
+            
+            const statusEl = document.getElementById('status');
+            
+            if (isLocalhost) {
+                statusEl.className = 'status checking';
+                statusEl.textContent = '⚠️ Entorno local - Configura Google Apps Script';
+            } else {
+                statusEl.className = 'status ready';
+                statusEl.textContent = '✅ Sistema listo - Haz clic para continuar';
+            }
+            
+            console.log('🔧 Configuración:', {
+                baseUrl: currentUrl,
+                redirectUri: redirectUri,
+                clientId: CONFIG.CLIENT_ID
+            });
+        });
+        
+        // Manejar clic en botón de LinkedIn
         document.getElementById('linkedin-btn').addEventListener('click', function() {
-            const state = Math.random().toString(36).substring(2);
+            // Generar state aleatorio para seguridad CSRF
+            const state = Math.random().toString(36).substring(2) + Date.now().toString(36);
             localStorage.setItem('oauth_state', state);
             
+            // Construir URL de autorización
             const authUrl = 'https://www.linkedin.com/oauth/v2/authorization?' +
                 'response_type=code' +
-                '&client_id=' + CONFIG.CLIENT_ID +
+                '&client_id=' + encodeURIComponent(CONFIG.CLIENT_ID) +
                 '&redirect_uri=' + encodeURIComponent(CONFIG.REDIRECT_URI) +
                 '&scope=' + encodeURIComponent(CONFIG.SCOPE) +
-                '&state=' + state;
+                '&state=' + encodeURIComponent(state);
             
+            console.log('🔐 Redirigiendo a LinkedIn OAuth:', authUrl);
+            
+            // Redirigir a LinkedIn
             window.location.href = authUrl;
         });
+        
+        // Verificar si ya está autenticado
+        const isAuthenticated = localStorage.getItem('isAuthenticated');
+        if (isAuthenticated === 'true') {
+            const linkedinUser = localStorage.getItem('linkedinUser');
+            if (linkedinUser) {
+                const user = JSON.parse(linkedinUser);
+                
+                if (confirm(`Ya estás autenticado como ${user.name}. ¿Ir al sitio principal?`)) {
+                    window.location.href = 'index.html';
+                }
+            }
+        }
     </script>
 </body>
 </html>

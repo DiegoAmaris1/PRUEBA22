@@ -1,4 +1,101 @@
 <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Amaris - Consultoría Contable</title>
+    
+    <!-- Este script DEBE ir PRIMERO antes de cargar cualquier contenido -->
+    <script>
+        // 🔐 PROTECCIÓN: Verificar autenticación ANTES de mostrar contenido
+        (function() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated');
+            const linkedinUser = localStorage.getItem('linkedinUser');
+            
+            // Si NO está autenticado, redirigir a la página de login
+            if (!isAuthenticated || isAuthenticated !== 'true' || !linkedinUser) {
+                // Guardar la URL actual para redirigir después del login
+                localStorage.setItem('returnUrl', window.location.href);
+                
+                // Redirigir a la página de acceso
+                window.location.replace('acceso.html');
+                
+                // Detener la carga de la página
+                throw new Error('No autenticado - redirigiendo...');
+            }
+            
+            // Si está autenticado, continuar normalmente
+            console.log('✅ Usuario autenticado:', JSON.parse(linkedinUser).name);
+        })();
+    </script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Resto de tus estilos -->
+</head>
+<body>
+    <!-- Mostrar información del usuario autenticado -->
+    <div id="user-welcome" style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 8px; z-index: 1000;">
+        <span id="user-name-display">Cargando...</span>
+        <button onclick="logout()" style="margin-left: 15px; padding: 5px 15px; background: #f06e49; border: none; border-radius: 5px; color: white; cursor: pointer;">
+            Cerrar Sesión
+        </button>
+    </div>
+
+    <!-- TU CONTENIDO ACTUAL DEL INDEX.HTML -->
+    <header>
+        <nav>
+            <!-- Tu navegación actual -->
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section">
+            <h1>Bienvenido a Diego Amaris Consultoría</h1>
+            <!-- Tu contenido actual -->
+        </section>
+        
+        <!-- Resto de tus secciones -->
+    </main>
+
+    <footer>
+        <!-- Tu footer actual -->
+    </footer>
+
+    <script>
+        // Mostrar nombre del usuario en la barra superior
+        window.addEventListener('DOMContentLoaded', function() {
+            const linkedinUser = localStorage.getItem('linkedinUser');
+            if (linkedinUser) {
+                const user = JSON.parse(linkedinUser);
+                document.getElementById('user-name-display').textContent = 
+                    '👋 Hola, ' + (user.given_name || user.name || 'Usuario');
+            }
+        });
+
+        // Función para cerrar sesión
+        function logout() {
+            if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+                localStorage.removeItem('isAuthenticated');
+                localStorage.removeItem('linkedinUser');
+                localStorage.removeItem('oauth_state');
+                window.location.replace('acceso.html');
+            }
+        }
+
+        // Prevenir acceso directo sin autenticación
+        window.addEventListener('pageshow', function(event) {
+            const isAuthenticated = localStorage.getItem('isAuthenticated');
+            if (!isAuthenticated || isAuthenticated !== 'true') {
+                window.location.replace('acceso.html');
+            }
+        });
+    </script>
+
+    <!-- Tus scripts actuales -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
 <html lang="es" style="font-size: 16px;">
 <head>
     <meta charset="utf-8">

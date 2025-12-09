@@ -70,6 +70,7 @@
             color: #a0a0a0;
             font-size: 16px;
             margin-bottom: 30px;
+            line-height: 1.6;
         }
         
         .user-info {
@@ -127,6 +128,21 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .debug-info {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 12px;
+            font-family: monospace;
+            color: #888;
+            max-height: 200px;
+            overflow-y: auto;
         }
         
         .hidden {
@@ -151,7 +167,7 @@
                 <p class="message">Tu acceso ha sido concedido exitosamente</p>
                 
                 <div class="user-info">
-                    <img id="user-photo" class="user-photo" src="" alt="Foto de perfil">
+                    <img id="user-photo" class="user-photo" src="" alt="Foto de perfil" style="display: none;">
                     <div id="user-name" class="user-name">Cargando...</div>
                     <div id="user-email" class="user-email">Cargando...</div>
                 </div>
@@ -167,16 +183,31 @@
                     Hubo un problema al procesar tu solicitud.
                 </p>
                 <a href="acceso.html" class="retry-button">← Volver a intentar</a>
+                
+                <div id="debug-info" class="debug-info"></div>
             </div>
         </div>
     </div>
     
     <script>
         // ============================================
-        // CONFIGURACIÓN
+        // CONFIGURACIÓN DEL BACKEND
         // ============================================
         
-        const BACKEND_URL = 'https://script.google.com/macros/s/TU_SCRIPT_ID/exec';
+        // 🔧 CAMBIA ESTE ID por el ID de tu Google Apps Script
+        const SCRIPT_ID = 'TU_SCRIPT_ID_AQUI'; // ej: AKfycbx...
+        const BACKEND_URL = `https://script.google.com/macros/s/${SCRIPT_ID}/exec`;
+        
+        // ============================================
+        // FUNCIÓN PARA MOSTRAR DEBUG
+        // ============================================
+        
+        function addDebug(message) {
+            const debugEl = document.getElementById('debug-info');
+            const timestamp = new Date().toLocaleTimeString();
+            debugEl.innerHTML += `[${timestamp}] ${message}<br>`;
+            console.log(message);
+        }
         
         // ============================================
         // OBTENER PARÁMETROS DE LA URL
@@ -199,37 +230,67 @@
         async function processCallback() {
             const params = getUrlParams();
             
+            addDebug('Iniciando proceso de callback...');
+            addDebug('Parámetros recibidos: ' + JSON.stringify(params));
+            
             // Verificar si hay error de LinkedIn
             if (params.error) {
                 showError('LinkedIn: ' + (params.error_description || params.error));
+                addDebug('Error de LinkedIn: ' + params.error);
                 return;
             }
             
             // Verificar que tengamos el código
             if (!params.code) {
                 showError('No se recibió código de autorización de LinkedIn');
+                addDebug('No se encontró código en la URL');
                 return;
             }
+            
+            addDebug('Código recibido: ' + params.code.substring(0, 20) + '...');
             
             // Verificar state (seguridad CSRF)
             const savedState = localStorage.getItem('oauth_state');
             if (savedState && params.state !== savedState) {
                 showError('Error de seguridad: State no coincide');
+                addDebug('State no coincide - Posible ataque CSRF');
+                return;
+            }
+            
+            addDebug('State verificado correctamente');
+            
+            // Verificar que el backend esté configurado
+            if (SCRIPT_ID === 'TU_SCRIPT_ID_AQUI') {
+                showError(
+                    'Backend no configurado. Debes:\n\n' +
+                    '1. Publicar tu Google Apps Script\n' +
+                    '2. Copiar el ID del script\n' +
+                    '3. Actualizar SCRIPT_ID en callback.html'
+                );
+                addDebug('SCRIPT_ID no configurado');
                 return;
             }
             
             try {
+                addDebug('Enviando código al backend...');
+                
                 // Enviar código al backend para intercambio
                 const response = await fetch(
-                    `${BACKEND_URL}?code=${params.code}&state=${params.state}`
+                    `${BACKEND_URL}?code=${encodeURIComponent(params.code)}&state=${encodeURIComponent(params.state)}`
                 );
                 
+                addDebug('Respuesta recibida del backend');
+                
                 const data = await response.json();
+                addDebug('Datos parseados: ' + JSON.stringify(data));
                 
                 if (data.error) {
                     showError(data.message || 'Error desconocido del servidor');
+                    addDebug('Error del servidor: ' + data.message);
                     return;
                 }
+                
+                addDebug('Autenticación exitosa!');
                 
                 // Mostrar éxito con datos del usuario
                 showSuccess(data.user);
@@ -237,10 +298,21 @@
                 // Guardar en localStorage
                 localStorage.setItem('isAuthenticated', 'true');
                 localStorage.setItem('linkedinUser', JSON.stringify(data.user));
+                localStorage.removeItem('oauth_state');
+                
+                addDebug('Datos guardados en localStorage');
+                
+                // Redirigir después de 2 segundos
+                setTimeout(() => {
+                    const returnUrl = localStorage.getItem('returnUrl') || 'index.html';
+                    localStorage.removeItem('returnUrl');
+                    window.location.href = returnUrl;
+                }, 2000);
                 
             } catch (error) {
                 console.error('Error:', error);
-                showError('Error de conexión con el servidor');
+                showError('Error de conexión con el servidor: ' + error.message);
+                addDebug('Error de conexión: ' + error.message);
             }
         }
         
@@ -260,8 +332,7 @@
             const photoEl = document.getElementById('user-photo');
             if (user.picture) {
                 photoEl.src = user.picture;
-            } else {
-                photoEl.style.display = 'none';
+                photoEl.style.display = 'block';
             }
         }
         
