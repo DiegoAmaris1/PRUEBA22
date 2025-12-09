@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta IA - Diego Amaris</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1d29 0%, #2a2d3a 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #f06e49;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .chat-container {
+            background: #131622;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            max-height: 500px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .message.ai {
+            text-align: left;
+        }
+
+        .message-content {
+            display: inline-block;
+            padding: 15px 20px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.user .message-content {
+            background: #f06e49;
+            color: white;
+        }
+
+        .message.ai .message-content {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .message-time {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        #userInput {
+            flex: 1;
+            padding: 15px 20px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #userInput:focus {
+            outline: none;
+            border-color: #f06e49;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        #sendBtn {
+            padding: 15px 30px;
+            background: #f06e49;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #sendBtn:hover {
+            background: #e05a35;
+            transform: translateY(-2px);
+        }
+
+        #sendBtn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading-dots {
+            display: inline-block;
+        }
+
+        .loading-dots span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #f06e49;
+            border-radius: 50%;
+            margin: 0 3px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        .suggestions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .suggestion-btn {
+            padding: 12px;
+            background: rgba(240, 110, 73, 0.1);
+            border: 1px solid rgba(240, 110, 73, 0.3);
+            border-radius: 10px;
+            color: #f06e49;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .suggestion-btn:hover {
+            background: rgba(240, 110, 73, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .info-box {
+            background: rgba(240, 110, 73, 0.1);
+            border-left: 4px solid #f06e49;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Estilos para el navbar */
+        .navbar {
+            background: rgba(19, 22, 34, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: #f06e49;
+            border-bottom: 2px solid #f06e49;
+        }
+
+        .nav-link-cta {
+            background: #f06e49;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link-cta:hover {
+            background: #e05a35;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 110, 73, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #f06e49;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Estilos para el CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, #f06e49 0%, #ff8a6b 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px auto 30px;
+            max-width: 900px;
+            box-shadow: 0 10px 40px rgba(240, 110, 73, 0.3);
+        }
+
+        .cta-box h3 {
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .cta-box p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: #fff;
+            color: #f06e49;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .cta-button:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-box {
+                padding: 30px 20px;
+            }
+            
+            .cta-box h3 {
+                font-size: 24px;
+            }
+            
+            .cta-box p {
+                font-size: 16px;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(19, 22, 34, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
+                padding: 20px 0;
+                gap: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-link {
+                border-bottom: none;
+                padding: 10px 0;
+            }
+
+            .nav-link-cta {
+                display: inline-block;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html#sec-7e2e" class="nav-link">Empresa</a></li>
+                <li><a href="index.html#carousel-1c6a" class="nav-link">Servicios</a></li>
+                <li><a href="index.html#sec-blog" class="nav-link">Blog</a></li>
+                <li><a href="index.html" class="nav-link-cta">🤖 Consulta IA</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Asistente IA Financiero</h1>
+            <p>Pregúntame sobre automatización contable, precios, servicios o beneficios</p>
+        </div>
+
+        <div class="chat-container">
+            <div class="info-box">
+                💡 <strong>Tip:</strong> Soy una IA entrenada en consultoría contable. Puedo ayudarte con información sobre servicios, precios y beneficios de automatización.
+            </div>
+
+            <div class="suggestions" id="suggestions">
+                <button class="suggestion-btn" onclick="askQuestion('¿Cuánto cuesta automatizar mi nómina?')">
+                    💰 ¿Cuánto cuesta automatizar nómina?
+                </button>
+                <button class="suggestion-btn" onclick="askQuestion('¿Qué servicios ofrecen?')">
+                    📋 ¿Qué servicios ofrecen?
+                </button>
+                <button class="suggestion-btn" onclick="askQuestion('¿Cómo funciona la automatización contable?')">
+                    ⚙️ ¿Cómo funciona la automatización?
+                </button>
+                <button class="suggestion-btn" onclick="askQuestion('¿Cuáles son los beneficios?')">
+                    ✨ ¿Cuáles son los beneficios?
+                </button>
+            </div>
+
+            <div class="messages" id="messages">
+                <div class="message ai">
+                    <div class="message-content">
+                        👋 ¡Hola! Soy el asistente IA de Diego Amaris Consultoría. Estoy aquí para responder tus preguntas sobre automatización contable, nómina, auditoría y más. ¿En qué puedo ayudarte?
+                    </div>
+                    <div class="message-time">Ahora</div>
+                </div>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="loading-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <p style="color: #ccc; margin-top: 10px;">Pensando...</p>
+            </div>
+
+            <div class="input-container">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    placeholder="Escribe tu pregunta aquí..."
+                    onkeypress="if(event.key === 'Enter') sendMessage()"
+                >
+                <button id="sendBtn" onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+
+        <!-- CTA Box añadido aquí -->
+        <div class="cta-box">
+            <h3>¿Listo para Implementar IA en tu Área Financiera?</h3>
+            <p>Agenda una consulta y descubre cómo podemos transformar tus finanzas con inteligencia artificial.</p>
+            <a href="index.html#sec-ea29" class="cta-button">Agendar Consulta Gratuita</a><li>
+        </div>
+    </div>
+
+    <script>
+        const messagesDiv = document.getElementById('messages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const loading = document.getElementById('loading');
+        const suggestions = document.getElementById('suggestions');
+
+        function askQuestion(question) {
+            userInput.value = question;
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            // Ocultar sugerencias después del primer mensaje
+            suggestions.style.display = 'none';
+
+            // Agregar mensaje del usuario
+            addMessage(message, 'user');
+            userInput.value = '';
+            sendBtn.disabled = true;
+
+            // Mostrar loading
+            loading.classList.add('active');
+
+            try {
+                // Llamar al backend
+                const response = await fetch('/api/gemini/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ mensaje: message })
+                });
+
+                const data = await response.json();
+
+                // Ocultar loading
+                loading.classList.remove('active');
+
+                if (data.respuesta) {
+                    addMessage(data.respuesta, 'ai');
+                } else {
+                    addMessage('Lo siento, hubo un error. Por favor intenta de nuevo.', 'ai');
+                }
+            } catch (error) {
+                loading.classList.remove('active');
+                addMessage('Error de conexión. Por favor verifica que el servidor esté corriendo.', 'ai');
+                console.error('Error:', error);
+            }
+
+            sendBtn.disabled = false;
+            userInput.focus();
+        }
+
+        function escapeHTML(str) {
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+        }
+
+        function formatAIResponse(text) {
+            // 1. Escapar HTML
+            let html = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+
+            // 2. Encabezados tipo "## Título"
+            html = html.replace(/^### (.*)$/gm, "<h3>$1</h3>");
+            html = html.replace(/^## (.*)$/gm, "<h2>$1</h2>");
+            html = html.replace(/^# (.*)$/gm, "<h1>$1</h1>");
+
+            // 3. Negrilla Markdown: **texto**
+            html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+            // 4. Listas con * o -
+            html = html.replace(/^[*-]\s+(.*)$/gm, "<li>$1</li>");
+
+            // 5. Listas numeradas "1. Texto"
+            html = html.replace(/^\d+\.\s+(.*)$/gm, "<li>$1</li>");
+
+            // 6. Empaquetar listas consecutivas en <ul>
+            html = html.replace(/(<li>[\s\S]*?<\/li>)/gm, "<ul>$1</ul>");
+
+            // 7. Saltos de línea → <br>
+            html = html.replace(/\n{2,}/g, "<br><br>");
+            html = html.replace(/\n/g, "<br>");
+
+            return html;
+        }
+
+        function addMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const now = new Date();
+            const time = now.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+
+            // Si es la IA, lo formateamos bonito; si es usuario, solo escapamos
+            const contentHTML = type === 'ai'
+                ? formatAIResponse(text)
+                : escapeHTML(text);
+
+            messageDiv.innerHTML = `
+                <div class="message-content">${contentHTML}</div>
+                <div class="message-time">${time}</div>
+            `;
+            
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        // Focus automático
+        userInput.focus();
+
+        // Funcionalidad del menú hamburguesa
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-link, .nav-link-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

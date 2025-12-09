@@ -1,0 +1,609 @@
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="algoritmos financieros, toma de decisiones, machine learning, análisis de datos, optimización financiera">
+    <meta name="description" content="Descubre cómo los algoritmos inteligentes están transformando la toma de decisiones financieras en las empresas modernas.">
+    <title>Algoritmos para la Toma de Decisiones Financieras - Blog Diego Amaris</title>
+    
+    <!-- RUTAS CORREGIDAS PARA CSS -->
+    <link rel="stylesheet" href="../css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="../css/Post-Template.css" media="screen">
+    <link rel="stylesheet" href="../css/index.css" media="screen">
+    <link rel="stylesheet" href="../css/audio-reader.css">
+    
+    <!-- RUTAS CORREGIDAS PARA JS -->
+    <script class="u-script" type="text/javascript" src="../js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../js/nicepage.js" defer=""></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    <meta name="theme-color" content="#f06e49">
+    <style>
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .article-header {
+            margin-bottom: 40px;
+        }
+        .article-category {
+            display: inline-block;
+            background: #f06e49;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .article-title {
+            color: #fff;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 20px 0;
+        }
+        .article-meta {
+            color: #a0a0a0;
+            font-size: 16px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            padding: 20px 0;
+            border-top: 1px solid #2a2d3e;
+            border-bottom: 1px solid #2a2d3e;
+        }
+        .article-featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .article-content {
+            color: #e0e0e0;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        .article-content h2 {
+            color: #fff;
+            font-size: 32px;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f06e49;
+        }
+        .article-content h3 {
+            color: #fff;
+            font-size: 24px;
+            margin: 30px 0 15px;
+        }
+        .article-content p {
+            margin: 20px 0;
+        }
+        .article-content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        .article-content li {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: linear-gradient(135deg, #1a1d2e 0%, #252a42 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #f06e49;
+        }
+        .info-box-title {
+            color: #f06e49;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #f06e49 0%, #ff8a6b 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px 0;
+        }
+        .cta-box h3 {
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .cta-button {
+            background: #fff;
+            color: #f06e49;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #f06e49;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            background: #1a1d2e;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .share-btn:hover {
+            background: #f06e49;
+        }
+
+        /* Estilos para el reproductor de audio */
+        .audio-player {
+            position: sticky;
+            top: 80px;
+            background: linear-gradient(135deg, #1a1d2e 0%, #252a42 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid #f06e49;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(240, 110, 73, 0.3);
+        }
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .audio-btn {
+            background: #f06e49;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        .audio-btn:hover {
+            background: #ff8a6b;
+            transform: translateY(-2px);
+        }
+        .audio-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .audio-status {
+            color: #e0e0e0;
+            font-size: 14px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .speed-control label {
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+        .speed-control select {
+            background: #1a1d2e;
+            color: #e0e0e0;
+            border: 1px solid #f06e49;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .voice-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .voice-control label {
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+        .voice-control select {
+            background: #1a1d2e;
+            color: #e0e0e0;
+            border: 1px solid #f06e49;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            min-width: 150px;
+        }
+        .reading-highlight {
+            background: rgba(240, 110, 73, 0.3);
+            transition: background 0.3s ease;
+        }
+    </style>
+</head>
+<body data-path-to-root="./" data-include-products="false" class="u-black u-body u-xl-mode" data-lang="es">
+    
+    <header class="u-clearfix u-header u-shading u-sticky u-sticky-f57f u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-header" id="sec-2819">
+        <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+            <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation">
+                <div class="menu-collapse" style="font-size: 1.125rem; letter-spacing: 0px; font-weight: 700;">
+                    <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+                        <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
+                        <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                            <g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect></g>
+                        </svg>
+                    </a>
+                </div>
+                <div class="u-custom-menu u-nav-container">
+                    <ul role="menubar" class="u-nav u-unstyled u-nav-1">
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html" style="padding: 10px 36px;">Inicio</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html#sec-7e2e" style="padding: 10px 36px;">Empresa</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html#carousel-1c6a" style="padding: 10px 36px;">Servicios</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../blog.html" style="padding: 10px 36px;">Blog</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html#sec-ea29" style="padding: 10px 36px;">Contactos</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <article class="article-container">
+            <a href="../blog.html" class="back-to-blog">← Volver al Blog</a>
+
+            <header class="article-header">
+                <span class="article-category">Inteligencia Artificial</span>
+                <h1 class="article-title">IA y Finanzas: El Futuro es Ahora</h1>
+                <div class="article-meta">
+                    <span>📅 Diciembre 2024</span>
+                    <span>✍️ Diego Amaris</span>
+                    <span>⏱️ 7 min de lectura</span>
+                </div>
+            </header>
+
+            <!-- Reproductor de Audio -->
+            <div class="audio-player" id="audioPlayer">
+                <div class="audio-controls">
+                    <button class="audio-btn" id="playBtn" onclick="toggleReading()">
+                        <span id="playIcon">🔊</span>
+                        <span id="playText">Escuchar artículo</span>
+                    </button>
+                    <button class="audio-btn" id="stopBtn" onclick="stopReading()" style="display: none;">
+                        ⏹️ Detener
+                    </button>
+                    <div class="audio-status" id="status">
+                        Presiona el botón para escuchar el artículo completo
+                    </div>
+                    <div class="speed-control">
+                        <label for="speedSelect">Velocidad:</label>
+                        <select id="speedSelect" onchange="changeSpeed()">
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1x Normal</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                        </select>
+                    </div>
+                    <div class="voice-control">
+                        <label for="voiceSelect">Voz:</label>
+                        <select id="voiceSelect">
+                            <option value="">Cargando voces...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <img src="../images/8ad73f3c.jpeg" alt="Inteligencia artificial en finanzas" class="article-featured-image">
+
+            <div class="share-buttons">
+                <a href="#" class="share-btn" onclick="shareOnWhatsApp(); return false;">📱 WhatsApp</a>
+                <a href="#" class="share-btn" onclick="shareOnLinkedIn(); return false;">💼 LinkedIn</a>
+                <a href="#" class="share-btn" onclick="shareOnTwitter(); return false;">🦋 Twitter</a>
+            </div>
+
+            <div class="article-content" id="articleContent">
+                
+                <p style="font-size: 20px; font-weight: 500; color: #f0f0f0;">
+                    La inteligencia artificial ya no es ciencia ficción en el mundo financiero. Hoy, algoritmos sofisticados procesan millones de transacciones, predicen tendencias de mercado y detectan fraudes en tiempo real. Las empresas que adoptan IA financiera obtienen ventajas competitivas decisivas: mayor precisión, velocidad y capacidad de análisis que ningún equipo humano podría igualar.
+                </p>
+
+                <h2>1. La Revolución de la IA en Finanzas</h2>
+                
+                <p>
+                    Durante décadas, las decisiones financieras se basaron en intuición, experiencia y análisis manual de datos históricos. La inteligencia artificial cambia radicalmente este paradigma al procesar volúmenes masivos de información en segundos, identificando patrones invisibles al ojo humano y generando predicciones con precisión estadística.
+                </p>
+
+                <p>
+                    La IA financiera abarca múltiples tecnologías: machine learning (aprendizaje automático), procesamiento de lenguaje natural, redes neuronales profundas y análisis predictivo. Estas herramientas transforman datos brutos en insights accionables que impulsan mejores decisiones empresariales.
+                </p>
+
+                <div class="info-box">
+                    <div class="info-box-title">💡 Estadística Clave</div>
+                    <p style="margin: 0; color: #e0e0e0;">
+                        El 77% de las instituciones financieras globales ya implementaron IA en sus operaciones, reportando incrementos del 20-30% en eficiencia operativa según McKinsey.
+                    </p>
+                </div>
+
+                <h2>2. Aplicaciones Prácticas de IA en Finanzas Empresariales</h2>
+
+                <h3>Análisis Predictivo de Flujo de Caja</h3>
+                <p>
+                    Los modelos de machine learning analizan históricos de ingresos, gastos, estacionalidad y variables económicas para proyectar flujos de caja futuros con precisión superior al 85%. Esto permite a las empresas anticipar necesidades de liquidez, optimizar inversiones y evitar crisis de efectivo.
+                </p>
+
+                <p>
+                    <strong>Ejemplo real:</strong> Una distribuidora colombiana implementó un modelo predictivo que analiza 200+ variables para proyectar ingresos mensuales. El resultado: precisión del 92% en pronósticos, permitiendo negociar mejores términos con proveedores y reducir costos financieros en 15%.
+                </p>
+
+                <h3>Detección Automatizada de Anomalías</h3>
+                <p>
+                    Algoritmos de IA monitorean continuamente transacciones financieras, identificando patrones anormales que podrían indicar fraude, errores contables o riesgos operacionales. El sistema aprende qué es "normal" para tu empresa y alerta cuando algo se desvía.
+                </p>
+
+                <h3>Optimización de Crédito y Cobranza</h3>
+                <p>
+                    Los modelos de scoring predictivo evalúan el riesgo crediticio de clientes con mayor precisión que métodos tradicionales. La IA analiza historial de pagos, comportamiento de compra, estacionalidad e indicadores económicos para predecir probabilidad de pago y recomendar límites de crédito óptimos.
+                </p>
+
+                <h2>Conclusión</h2>
+
+                <p>
+                    La inteligencia artificial no es el futuro de las finanzas empresariales, es el presente. Las organizaciones que adoptan estas tecnologías hoy ganan ventajas competitivas medibles: toman mejores decisiones más rápido, reducen riesgos, optimizan recursos y responden ágilmente a cambios del mercado.
+                </p>
+
+                <p>
+                    La buena noticia es que ya no necesitas ser una gran corporación para aprovechar IA. Existen herramientas accesibles, consultores especializados y metodologías probadas que hacen posible implementar soluciones de IA financiera en empresas de cualquier tamaño.
+                </p>
+
+            </div>
+
+            <div class="cta-box">
+                <h3>¿Listo para Implementar IA en tu Área Financiera?</h3>
+                <p>Agenda una consulta y descubre cómo podemos transformar tus finanzas con inteligencia artificial.</p>
+                <a href="../index.html#sec-ea29" class="cta-button">Agendar Consulta Gratuita</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="u-align-center u-clearfix u-container-align-center u-footer u-grey-80 u-footer" id="sec-034c">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <p style="color: #a0a0a0; margin: 10px 0;">© 2024 Diego Amaris - Consultoría Contable y Financiera</p>
+            <p style="color: #666;">
+                <a href="../index.html#sec-ea29" style="color: #f06e49; text-decoration: none;">Contacto</a> | 
+                <a href="mailto:diegoamarisreal123@gmail.com" style="color: #f06e49; text-decoration: none;">Email</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales para el sistema de lectura
+        let synth = window.speechSynthesis;
+        let utterance = null;
+        let isReading = false;
+        let currentParagraph = 0;
+        let paragraphs = [];
+        let availableVoices = [];
+
+        // Inicializar cuando la página carga
+        window.addEventListener('load', function() {
+            initializeVoices();
+            prepareParagraphs();
+        });
+
+        // Cargar voces disponibles
+        function initializeVoices() {
+            function loadVoices() {
+                availableVoices = synth.getVoices();
+                const voiceSelect = document.getElementById('voiceSelect');
+                voiceSelect.innerHTML = '';
+                
+                // Filtrar voces en español
+                const spanishVoices = availableVoices.filter(voice => 
+                    voice.lang.includes('es')
+                );
+                
+                if (spanishVoices.length > 0) {
+                    spanishVoices.forEach((voice, index) => {
+                        const option = document.createElement('option');
+                        option.value = index;
+                        option.textContent = `${voice.name} (${voice.lang})`;
+                        voiceSelect.appendChild(option);
+                    });
+                } else {
+                    // Si no hay voces en español, mostrar todas
+                    availableVoices.forEach((voice, index) => {
+                        const option = document.createElement('option');
+                        option.value = index;
+                        option.textContent = `${voice.name} (${voice.lang})`;
+                        voiceSelect.appendChild(option);
+                    });
+                }
+            }
+            
+            loadVoices();
+            if (synth.onvoiceschanged !== undefined) {
+                synth.onvoiceschanged = loadVoices;
+            }
+        }
+
+        // Preparar párrafos para lectura
+        function prepareParagraphs() {
+            const content = document.getElementById('articleContent');
+            const elements = content.querySelectorAll('p, h2, h3, li');
+            paragraphs = Array.from(elements).map(el => ({
+                element: el,
+                text: el.textContent.trim()
+            })).filter(p => p.text.length > 0);
+        }
+
+        // Alternar lectura (reproducir/pausar)
+        function toggleReading() {
+            if (!isReading) {
+                startReading();
+            } else {
+                pauseReading();
+            }
+        }
+
+        // Iniciar lectura
+        function startReading() {
+            if (paragraphs.length === 0) {
+                alert('No hay contenido para leer');
+                return;
+            }
+
+            isReading = true;
+            document.getElementById('playText').textContent = 'Pausar';
+            document.getElementById('playIcon').textContent = '⏸️';
+            document.getElementById('stopBtn').style.display = 'inline-flex';
+            
+            readNextParagraph();
+        }
+
+        // Leer siguiente párrafo
+        function readNextParagraph() {
+            if (currentParagraph >= paragraphs.length) {
+                stopReading();
+                return;
+            }
+
+            const paragraph = paragraphs[currentParagraph];
+            
+            // Resaltar párrafo actual
+            removeAllHighlights();
+            paragraph.element.classList.add('reading-highlight');
+            
+            // Scroll suave al párrafo
+            paragraph.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Actualizar estado
+            document.getElementById('status').textContent = 
+                `Leyendo... (${currentParagraph + 1}/${paragraphs.length})`;
+
+            // Crear utterance
+            utterance = new SpeechSynthesisUtterance(paragraph.text);
+            
+            // Configurar voz seleccionada
+            const voiceSelect = document.getElementById('voiceSelect');
+            const selectedVoiceIndex = voiceSelect.value;
+            if (selectedVoiceIndex && availableVoices.length > 0) {
+                const spanishVoices = availableVoices.filter(v => v.lang.includes('es'));
+                utterance.voice = spanishVoices[selectedVoiceIndex] || availableVoices[0];
+            }
+            
+            // Configurar velocidad
+            utterance.rate = parseFloat(document.getElementById('speedSelect').value);
+            utterance.pitch = 1;
+            utterance.volume = 1;
+
+            // Eventos
+            utterance.onend = function() {
+                if (isReading) {
+                    currentParagraph++;
+                    readNextParagraph();
+                }
+            };
+
+            utterance.onerror = function(event) {
+                console.error('Error en la síntesis de voz:', event);
+                stopReading();
+            };
+
+            // Reproducir
+            synth.speak(utterance);
+        }
+
+        // Pausar lectura
+        function pauseReading() {
+            isReading = false;
+            synth.pause();
+            document.getElementById('playText').textContent = 'Continuar';
+            document.getElementById('playIcon').textContent = '▶️';
+            document.getElementById('status').textContent = 'Pausado';
+        }
+
+        // Detener lectura
+        function stopReading() {
+            isReading = false;
+            synth.cancel();
+            currentParagraph = 0;
+            removeAllHighlights();
+            document.getElementById('playText').textContent = 'Escuchar artículo';
+            document.getElementById('playIcon').textContent = '🔊';
+            document.getElementById('stopBtn').style.display = 'none';
+            document.getElementById('status').textContent = 'Presiona el botón para escuchar el artículo completo';
+        }
+
+        // Cambiar velocidad
+        function changeSpeed() {
+            if (isReading && utterance) {
+                synth.cancel();
+                readNextParagraph();
+            }
+        }
+
+        // Remover resaltados
+        function removeAllHighlights() {
+            document.querySelectorAll('.reading-highlight').forEach(el => {
+                el.classList.remove('reading-highlight');
+            });
+        }
+
+        // Funciones de compartir
+        function shareOnWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('IA y Finanzas: El Futuro es Ahora');
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('IA y Finanzas: El Futuro es Ahora');
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        // Limpiar al salir de la página
+        window.addEventListener('beforeunload', function() {
+            if (isReading) {
+                synth.cancel();
+            }
+        });
+    </script>
+</body>
+</html>

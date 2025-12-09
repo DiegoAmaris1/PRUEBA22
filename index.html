@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="es" style="font-size: 16px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Consultoría Contable y Financiera - Diego Amaris</title>
+
+    <meta name="keywords" content="consultoría contable, asesoría tributaria, finanzas, nómina, auditoría, automatización, Bogotá, Colombia">
+    <meta name="description" content="Consultoría contable, tributaria y financiera para personas y empresas. Automatización, auditoría, nómina y analítica financiera.">
+
+    <!-- Nicepage & CSS base -->
+    <link rel="stylesheet" href="css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="css/index.css" media="screen">
+
+
+
+    <!-- Scripts base -->
+    <script class="u-script" type="text/javascript" src="js/jquery.js" defer></script>
+    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400,600,700&display=swap">
+
+    <!-- Preload imágenes -->
+    <link rel="preload" as="image" href="images/Screenshot2025-04-19182809.png" fetchpriority="high">
+    <link rel="preload" as="image" href="images/ai-robot-hand-close-human-hand.jpg">
+
+    <!-- SEO meta -->
+    <meta property="og:title" content="Consultoría Contable y Financiera - Diego Amaris">
+    <meta property="og:description" content="Consultoría contable, tributaria y financiera para personas y empresas.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/ai-generated-concept-human.jpg">
+
+    <meta name="theme-color" content="#f06e49">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <style>
+        /* ESTILOS GENERALES */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0f1117;
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* ESTILOS PARA CENTRAR CONTENIDO DE CONTACTO */
+        .u-section-contacto {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+            padding: 100px 20px 40px 20px !important;
+        }
+        
+        .u-sheet-contacto {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .u-layout-wrap-contacto {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .u-layout-row-contacto {
+            display: flex !important;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px;
+            flex-wrap: nowrap !important;
+        }
+        
+        .u-image-contacto {
+            flex: 0 0 45% !important;
+            min-width: 450px !important;
+            max-width: 550px !important;
+            height: 650px !important;
+            min-height: 650px !important;
+        }
+        
+        .u-layout-cell-contacto-2 {
+            flex: 0 0 55% !important;
+            min-width: 500px !important;
+            max-width: 700px !important;
+        }
+        
+        .u-container-layout-contacto {
+            padding: 20px !important;
+            max-height: 650px;
+            overflow-y: auto;
+        }
+        
+        /* AJUSTAR TAMAÑOS DE TEXTO CONTACTO */
+        .u-text-contacto-1 {
+            font-size: 0.9rem !important;
+            margin-bottom: 8px !important;
+        }
+        
+        .u-text-contacto-2 {
+            font-size: 1.5rem !important;
+            margin-bottom: 12px !important;
+        }
+        
+        .u-text-contacto-3 {
+            font-size: 0.95rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 15px !important;
+        }
+        
+        /* FORMULARIO MÁS COMPACTO */
+        #contact-form {
+            padding: 15px !important;
+        }
+        
+        #contact-form h3 {
+            font-size: 1.3rem !important;
+            margin-bottom: 12px !important;
+        }
+        
+        #contact-form label {
+            font-size: 0.9rem !important;
+            margin-bottom: 3px !important;
+            display: block;
+        }
+        
+        #contact-form input,
+        #contact-form textarea {
+            padding: 10px !important;
+            font-size: 0.9rem !important;
+        }
+        
+        #contact-form textarea {
+            min-height: 80px !important;
+            max-height: 100px !important;
+        }
+        
+        /* CAROUSEL SNAP STYLES PARA SERVICIOS */
+        .service-card-carousel {
+            position: relative;
+            overflow: hidden;
+            margin: 20px auto;
+            max-width: 1400px;
+            padding: 0 60px;
+        }
+        
+        .service-cards-container {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 100%;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .service-cards-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* SLIDE 1 - GRID DE SERVICIOS */
+        .services-grid-slide {
+            scroll-snap-align: center;
+            background: rgba(19, 22, 34, 0.6);
+            border: 2px solid #2a2d3a;
+            border-radius: 12px;
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            min-height: 380px;
+        }
+        
+        .service-grid-item {
+            background: rgba(10, 14, 26, 0.8);
+            border: 2px solid #2a2d3a;
+            border-radius: 10px;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-grid-item:hover {
+            transform: translateY(-5px);
+            border-color: #f06e49;
+            box-shadow: 0 8px 25px rgba(240, 110, 73, 0.3);
+        }
+        
+        .service-grid-icon {
+            width: 55px;
+            height: 55px;
+            background: #f06e49;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .service-grid-icon img {
+            width: 32px;
+            height: 32px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .service-grid-title {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0;
+        }
+        
+        /* SLIDES 2-7 - DETALLE DE SERVICIOS */
+        .service-detail-slide {
+            scroll-snap-align: center;
+            background: rgba(19, 22, 34, 0.6);
+            border: 2px solid #2a2d3a;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 25px;
+            align-items: center;
+            min-height: 380px;
+        }
+        
+        .service-detail-slide:hover {
+            transform: translateY(-3px);
+            border-color: #f06e49;
+            box-shadow: 0 10px 30px rgba(240, 110, 73, 0.3);
+        }
+        
+        .service-image-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .service-image-snap {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+        
+        .service-content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            justify-content: center;
+        }
+        
+        .service-title-snap {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+        }
+        
+        .service-desc-snap {
+            color: #ccc;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin: 0 0 8px 0;
+        }
+        
+        .service-benefits-snap {
+            color: #f06e49;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 5px 0 5px 0;
+        }
+        
+        .benefits-list-snap {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .benefits-list-snap li {
+            color: #aaa;
+            font-size: 0.85rem;
+            padding: 3px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .benefits-list-snap li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #f06e49;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(240, 110, 73, 0.9);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(240, 110, 73, 0.4);
+        }
+        
+        .carousel-nav-btn:hover {
+            background: rgba(255, 138, 101, 0.95);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-nav-btn.prev-btn {
+            left: 5px;
+        }
+        
+        .carousel-nav-btn.next-btn {
+            right: 5px;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #2a2d3a;
+            border: 2px solid #2a2d3a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background: #f06e49;
+            border-color: #f06e49;
+            transform: scale(1.2);
+        }
+        
+        .scroll-hint {
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+/* HEADER NEGRO DESDE EL INICIO */
+.u-header {
+    background: #000000 !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    border: none !important;
+}
+
+.u-header .u-sheet {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Asegurar que hero section empiece correctamente */
+#hero-section {
+    margin-top: 0 !important;
+    padding-top: 10px !important;
+    border-top: none !important;
+}  
+    </style>
+</head>
+<body data-home-page="index.html" data-home-page-title="Inicio" data-path-to-root="./" data-include-products="false" class="u-black u-body u-xl-mode" data-lang="es">
+
+<!-- ========================================
+     HEADER - NAVEGACIÓN PRINCIPAL
+     ======================================== -->
+<header class="u-clearfix u-header u-shading u-sticky u-sticky-f57f u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-header" id="sec-2819">
+  <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+    <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Navegación principal">
+      <div class="menu-collapse" style="font-size: 1.125rem; letter-spacing: 0px; font-weight: 700;">
+        <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" tabindex="-1" aria-label="Open menu" aria-controls="b0b8">
+          <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
+          <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+            <g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect></g>
+          </svg>
+        </a>
+      </div>
+      <div class="u-custom-menu u-nav-container">
+        <ul role="menubar" class="u-nav u-unstyled u-nav-1">
+          <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#hero-section" style="padding: 10px 36px;">Inicio</a></li>
+          <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#servicios-section" style="padding: 10px 36px;">Servicios</a></li>
+          <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#blog-section" style="padding: 10px 36px;">Blog</a></li>
+          <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#clientes-section" style="padding: 10px 36px;">Clientes</a></li>
+          <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#contacto-section" style="padding: 10px 36px;">Contacto</a></li>
+          <li role="none" class="u-nav-item"><a href="consulta-ia.html" class="u-button-style u-nav-link" style="padding: 10px 36px;">🤖 Consulta IA</a></li>
+        </ul>
+      </div>
+      <div class="u-custom-menu u-nav-container-collapse" id="b0b8" role="region" aria-label="Panel del menú">
+        <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+          <div class="u-inner-container-layout u-sidenav-overflow">
+            <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
+            <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2" role="menubar">
+              <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="#hero-section">Inicio</a></li>
+              <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="#servicios-section">Servicios</a></li>
+              <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="#blog-section">Blog</a></li>
+              <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="#clientes-section">Clientes</a></li>
+              <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="#contacto-section">Contacto</a></li>
+              <li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="consulta-ia.html">🤖 Consulta IA</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ========================================
+     MAIN CONTENT - CONTENIDO PRINCIPAL
+     ======================================== -->
+<main id="main-content" role="main">
+  
+  <!-- ========================================
+       SECCIÓN 1: HERO (de empresa1.html)
+       ======================================== -->
+  <section class="u-clearfix u-custom-color-1 u-valign-middle-lg u-valign-middle-sm u-section-1" id="hero-section">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <div class="custom-expanded data-layout-selected u-clearfix u-expanded-width-lg u-expanded-width-xl u-gutter-100 u-layout-wrap u-radius u-layout-wrap-1">
+        <div class="u-gutter-0 u-layout">
+          <div class="u-layout-col">
+            <div class="u-size-60">
+              <div class="u-layout-row">
+                <div class="u-container-style u-custom-color-1 u-layout-cell u-radius u-shape-round u-size-33 u-layout-cell-1" data-animation-name="flipIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction="X">
+                  <div class="u-container-layout u-container-layout-1">
+                    <h1 class="u-align-center u-text u-text-default-lg u-text-default-xl u-text-1">
+                      Automatizamos tu Contabilidad para que te Enfoques en Hacer Crecer tu Negocio
+                    </h1>
+                    <p class="u-text u-text-2">
+                      <strong>Especialistas en digitalización contable para PYMEs.</strong><br><br>
+                      
+                      Combinamos experiencia financiera con tecnología avanzada (IA, automatización, Power BI) para transformar la gestión contable de tu empresa. Eliminamos tareas repetitivas, garantizamos cumplimiento normativo y te proporcionamos información financiera en tiempo real.<br><br>
+                      
+                      <strong>Resultado:</strong> Más tiempo para estrategia, menos riesgo de sanciones, decisiones basadas en datos precisos.
+                    </p>
+                    <center style="margin-top: 30px;">
+                      <a href="#contacto-section" class="u-btn u-button-style u-palette-1-base">
+                        Solicita una Consulta Gratuita
+                      </a>
+                    </center>
+                  </div>
+                </div>
+                <div class="skrollable u-container-style u-layout-cell u-radius u-size-27 u-layout-cell-2">
+                  <div class="u-container-layout u-container-layout-2">
+                    <img class="custom-expanded u-image u-image-round u-radius u-image-1" src="images/Screenshot2025-04-19182809.png" alt="Especialista financiero" width="507" height="598" data-image-width="507" data-image-height="598" data-animation-out="0" fetchpriority="high" loading="eager" decoding="async">
+                    <p class="u-text u-text-3">Especialista Financiero</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ========================================
+       SECCIÓN 2: SERVICIOS
+       ======================================== -->
+  <section class="u-clearfix u-custom-color-1" id="servicios-section" style="padding: 90px 20px 60px 20px;">
+    <div class="u-clearfix u-sheet" style="max-width: 1400px;">
+      
+      <!-- Header -->
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 class="u-align-center u-text u-text-body-alt-color" style="font-size: 2.2rem; margin-bottom: 10px;">
+          Nuestros Servicios
+        </h2>
+        <p style="color: #ccc; font-size: 1rem; max-width: 700px; margin: 0 auto;">
+          Soluciones integrales con tecnología avanzada para transformar tu gestión financiera
+        </p>
+      </div>
+
+      <!-- Carousel con Snap -->
+      <div class="service-card-carousel">
+        <button class="carousel-nav-btn prev-btn" onclick="scrollToPrevService()" aria-label="Anterior">‹</button>
+        <button class="carousel-nav-btn next-btn" onclick="scrollToNextService()" aria-label="Siguiente">›</button>
+        
+        <div class="service-cards-container" id="serviceCardsContainer">
+          
+          <!-- SLIDE 1: GRID DE SERVICIOS -->
+          <div class="services-grid-slide">
+            <div class="service-grid-item" onclick="scrollToService(1)">
+              <div class="service-grid-icon">
+                <img src="images/3483127-d1c058cb.png" alt="Gestión Contable">
+              </div>
+              <h3 class="service-grid-title">Gestión Contable Inteligente</h3>
+            </div>
+            
+            <div class="service-grid-item" onclick="scrollToService(2)">
+              <div class="service-grid-icon">
+                <img src="images/8593364-08248f1e.png" alt="Optimización Tributaria">
+              </div>
+              <h3 class="service-grid-title">Optimización Tributaria Digital</h3>
+            </div>
+            
+            <div class="service-grid-item" onclick="scrollToService(3)">
+              <div class="service-grid-icon">
+                <img src="images/2591945-7b224637.png" alt="Cumplimiento">
+              </div>
+              <h3 class="service-grid-title">Cumplimiento Normativo Inteligente</h3>
+            </div>
+            
+            <div class="service-grid-item" onclick="scrollToService(4)">
+              <div class="service-grid-icon">
+                <img src="images/3483127-d1c058cb.png" alt="Power BI">
+              </div>
+              <h3 class="service-grid-title">Modelado Financiero con Power BI</h3>
+            </div>
+            
+            <div class="service-grid-item" onclick="scrollToService(5)">
+              <div class="service-grid-icon">
+                <img src="images/8593364-08248f1e.png" alt="Auditoría">
+              </div>
+              <h3 class="service-grid-title">Auditoría Basada en Riesgos</h3>
+            </div>
+            
+            <div class="service-grid-item" onclick="scrollToService(6)">
+              <div class="service-grid-icon">
+                <img src="images/2591945-7b224637.png" alt="Transformación">
+              </div>
+              <h3 class="service-grid-title">Transformación Digital Contable</h3>
+            </div>
+          </div>
+
+          <!-- SLIDE 2: Gestión Contable -->
+          <div class="service-detail-slide">
+            <div class="service-image-section">
+              <img src="images/1 gestion contable inteligente.png" alt="Colaboración humano e inteligencia artificial" class="service-image-snap">
+            </div>
+            <div class="service-content-section">
+              <h3 class="service-title-snap">Gestión Contable Inteligente</h3>
+              <p class="service-desc-snap">
+                <strong>Libérate de la contabilidad manual:</strong><br>
+                • Automatización completa del ciclo contable con IA<br>
+                • Conciliación bancaria automática en tiempo real<br>
+                • Digitalización inteligente de facturas y documentos<br>
+                • Integración con Alegra, Siigo, QuickBooks y más
+              </p>
+              <div class="service-benefits-snap">
+                Beneficios:
+                <ul class="benefits-list-snap">
+                  <li>Ahorra 15+ horas semanales en tareas contables</li>
+                  <li>Cero errores manuales en registros</li>
+                  <li>Reportes financieros en tiempo real</li>
+                  <li>Reducción de costos operativos hasta 40%</li>
+                  <li>Cumplimiento normativo garantizado</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3: Optimización Tributaria -->
+          <div class="service-detail-slide">
+            <div class="service-image-section">
+              <img src="images/2 tributaria.png" alt="Análisis financiero inteligente" class="service-image-snap">
+            </div>
+            <div class="service-content-section">
+              <h3 class="service-title-snap">Optimización Tributaria Digital</h3>
+              <p class="service-desc-snap">
+                <strong>Decisiones financieras inteligentes:</strong><br>
+                • Dashboards en tiempo real con Power BI<br>
+                • Modelado de escenarios y proyecciones<br>
+                • Análisis de flujo de caja y rentabilidad<br>
+                • Asesoría estratégica en inversiones
+              </p>
+              <div class="service-benefits-snap">
+                Beneficios:
+                <ul class="benefits-list-snap">
+                  <li>Decisiones basadas en datos, no en intuición</li>
+                  <li>Reducción de carga fiscal de forma legal</li>
+                  <li>Prevención de sanciones DIAN</li>
+                  <li>Identificación de oportunidades de ahorro</li>
+                  <li>Asesoría tributaria especializada 24/7</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 4: Cumplimiento Normativo -->
+          <div class="service-detail-slide">
+            <div class="service-image-section">
+              <img src="images/3 cumplimiento normativo.png" alt="Protección empresarial" class="service-image-snap">
+            </div>
+            <div class="service-content-section">
+              <h3 class="service-title-snap">Cumplimiento Normativo Inteligente</h3>
+              <p class="service-desc-snap">
+                <strong>Protege tu empresa de riesgos:</strong><br>
+                • Auditoría preventiva basada en IA<br>
+                • Evaluación de controles internos (COSO)<br>
+                • Cumplimiento SG-SST e ISO 9001<br>
+                • Tableros de control de riesgos en tiempo real
+              </p>
+              <div class="service-benefits-snap">
+                Beneficios:
+                <ul class="benefits-list-snap">
+                  <li>Prevención de sanciones y multas</li>
+                  <li>Alertas automáticas de vencimientos</li>
+                  <li>Tranquilidad regulatoria total</li>
+                  <li>Reportes automatizados para entes de control</li>
+                  <li>Monitoreo continuo de obligaciones legales</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 5: Analítica Power BI -->
+          <div class="service-detail-slide">
+            <div class="service-image-section">
+              <img src="images/4 modelof inanciero power bi.png" alt="Análisis con Power BI" class="service-image-snap">
+            </div>
+            <div class="service-content-section">
+              <h3 class="service-title-snap">Modelado Financiero con Power BI</h3>
+              <p class="service-desc-snap">
+                <strong>Nómina sin errores ni retrasos:</strong><br>
+                • Liquidación automática y pagos PILA<br>
+                • Control horario inteligente<br>
+                • Indicadores de gestión de talento humano<br>
+                • Cumplimiento laboral garantizado
+              </p>
+              <div class="service-benefits-snap">
+                Beneficios:
+                <ul class="benefits-list-snap">
+                  <li>Cero errores en nómina, empleados satisfechos</li>
+                  <li>Visualización clara de KPIs financieros</li>
+                  <li>Proyecciones precisas de flujo de caja</li>
+                  <li>Análisis de rentabilidad por producto/servicio</li>
+                  <li>Dashboards personalizados para gerencia</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 6: Auditoría -->
+          <div class="service-detail-slide">
+            <div class="service-image-section">
+              <img src="images/5 auditoria basad en riegos.png" alt="Auditoría preventiva" class="service-image-snap">
+            </div>
+            <div class="service-content-section">
+              <h3 class="service-title-snap">Auditoría Basada en Riesgos</h3>
+              <p class="service-desc-snap">
+                <strong>Moderniza tu área financiera:</strong><br>
+                • Diagnóstico y transformación digital<br>
+                • Capacitación en Power BI, Excel avanzado, ERP<br>
+                • Integración completa de sistemas<br>
+                • Conectividad CRM-ERP-Bancos
+              </p>
+              <div class="service-benefits-snap">
+                Beneficios:
+                <ul class="benefits-list-snap">
+                  <li>Equipo financiero capacitado y actualizado</li>
+                  <li>Prevención efectiva de fraudes internos</li>
+                  <li>Controles internos robustos (COSO)</li>
+                  <li>Detección temprana de irregularidades</li>
+                  <li>Certificación en estándares internacionales</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 7: Transformación Digital -->
+          <div class="service-detail-slide">
+            <div class="service-image-section">
+              <img src="images/6 tranformacion digital.png" alt="Transformación digital" class="service-image-snap">
+            </div>
+            <div class="service-content-section">
+              <h3 class="service-title-snap">Transformación Digital Contable</h3>
+              <p class="service-desc-snap">
+                <strong>Gestión ágil y transparente:</strong><br>
+                • Metodología Scrum para proyectos<br>
+                • Entregas parciales con feedback continuo<br>
+                • Transparencia total con Trello/Notion<br>
+                • Sprints de mejora continua
+              </p>
+              <div class="service-benefits-snap">
+                Beneficios:
+                <ul class="benefits-list-snap">
+                  <li>Siempre sabes en qué estamos trabajando</li>
+                  <li>Sistemas completamente integrados</li>
+                  <li>Operación eficiente y sin papeles</li>
+                  <li>Acceso remoto seguro a información</li>
+                  <li>Escalabilidad para crecimiento empresarial</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Indicadores -->
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+
+      <!-- Indicador de scroll -->
+      <div class="scroll-hint">
+        ← Desliza para ver más servicios →
+      </div>
+
+      <!-- CTA -->
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="#contacto-section" class="u-btn u-button-style u-palette-1-base" style="padding: 12px 35px; font-size: 1rem; text-decoration: none; display: inline-block; border-radius: 8px;">
+          Solicita una Consulta Gratuita
+        </a>
+        <p style="color: #999; margin-top: 12px; font-size: 0.85rem;">
+          Respuesta garantizada en menos de 24 horas
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECCIÓN 3: BLOG
+       ======================================== -->
+  <section class="u-clearfix u-custom-color-1" id="blog-section" style="padding: 60px 20px;">
+    <div class="u-clearfix u-sheet" style="max-width: 1200px; margin: 0 auto;">
+      
+      <!-- Header del Blog -->
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 class="u-align-center u-text u-text-body-alt-color" style="font-size: 2.2rem; margin-bottom: 10px;">
+          Blog de Finanzas y Tecnología
+        </h2>
+        <p style="color: #999; font-size: 1rem; max-width: 700px; margin: 0 auto;">
+          Artículos sobre IA, automatización y toma de decisiones financieras para empresas modernas
+        </p>
+      </div>
+
+      <!-- Grid de Blog (Solo 3 artículos) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto;">
+        
+        <!-- Artículo 1 -->
+        <article style="background: #1a1d2e; border-radius: 12px; overflow: hidden; border: 1px solid #2a2d3a; transition: all 0.3s ease; display: flex; flex-direction: column;">
+          <div style="width: 100%; height: 180px; overflow: hidden;">
+            <img src="images/1 gestion contable inteligente.png" alt="IA y Finanzas" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;">
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+            <div style="display: flex; gap: 12px; margin-bottom: 8px; color: #666; font-size: 0.7rem;">
+              <span>📅 Diciembre 2024</span>
+              <span>⏱️ 5 min</span>
+            </div>
+            <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 8px; line-height: 1.3; font-weight: 600;">IA y Finanzas: El Futuro es Ahora</h3>
+            <p style="color: #aaa; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; flex-grow: 1;">
+              Descubre cómo la inteligencia artificial está revolucionando la toma de decisiones financieras en las empresas modernas.
+            </p>
+            <a href="blog/IA y Finanzas.html" style="display: inline-flex; align-items: center; gap: 5px; padding: 10px 20px; background: #f06e49; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; align-self: flex-start;">
+              Leer más →
+            </a>
+          </div>
+        </article>
+        
+        <!-- Artículo 2 -->
+        <article style="background: #1a1d2e; border-radius: 12px; overflow: hidden; border: 1px solid #2a2d3a; transition: all 0.3s ease; display: flex; flex-direction: column;">
+          <div style="width: 100%; height: 180px; overflow: hidden;">
+            <img src="images/3 cumplimiento normativo.png" alt="Contabilidad y Tecnología" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;">
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+            <div style="display: flex; gap: 12px; margin-bottom: 8px; color: #666; font-size: 0.7rem;">
+              <span>📅 Diciembre 2024</span>
+              <span>⏱️ 6 min</span>
+            </div>
+            <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 8px; line-height: 1.3; font-weight: 600;">Contabilidad y Tecnología: La Nueva Era</h3>
+            <p style="color: #aaa; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; flex-grow: 1;">
+              La convergencia entre contabilidad y tecnología está transformando la gestión financiera empresarial.
+            </p>
+            <a href="blog/Contabilidad y Tecnologia.html" style="display: inline-flex; align-items: center; gap: 5px; padding: 10px 20px; background: #f06e49; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; align-self: flex-start;">
+              Leer más →
+            </a>
+          </div>
+        </article>
+        
+        <!-- Artículo 3 -->
+        <article style="background: #1a1d2e; border-radius: 12px; overflow: hidden; border: 1px solid #2a2d3a; transition: all 0.3s ease; display: flex; flex-direction: column;">
+          <div style="width: 100%; height: 180px; overflow: hidden;">
+            <img src="images/6 tranformacion digital.png" alt="Algoritmos Financieros" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;">
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+            <div style="display: flex; gap: 12px; margin-bottom: 8px; color: #666; font-size: 0.7rem;">
+              <span>📅 Diciembre 2024</span>
+              <span>⏱️ 7 min</span>
+            </div>
+            <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 8px; line-height: 1.3; font-weight: 600;">Algoritmos para Decisiones Financieras</h3>
+            <p style="color: #aaa; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; flex-grow: 1;">
+              Aprende cómo los algoritmos optimizan la planificación financiera y predicen tendencias de mercado.
+            </p>
+            <a href="blog/Algorimos para la toma de desiciones financieras.html" style="display: inline-flex; align-items: center; gap: 5px; padding: 10px 20px; background: #f06e49; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; align-self: flex-start;">
+              Leer más →
+            </a>
+          </div>
+        </article>
+        
+      </div>
+
+      <!-- Botón Ver Todos los Artículos -->
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="blog.html" style="display: inline-block; padding: 14px 40px; background: transparent; border: 2px solid #f06e49; color: #f06e49; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: all 0.3s; position: relative; overflow: hidden;">
+          <span style="position: relative; z-index: 1;">Ver Todos los Artículos →</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       SECCIÓN 4: CLIENTES (de clientes4.html)
+       ======================================== -->
+  <section class="skrollable u-clearfix u-custom-color-1 u-section-5" id="clientes-section" style="padding: 60px 20px 60px 20px;">
+    <div class="custom-expanded data-layout-selected u-clearfix u-expanded-width-lg u-expanded-width-xl u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <div class="u-container-style u-layout-cell u-size-60 u-layout-cell-1">
+            <div class="u-container-layout u-container-layout-1" style="padding-top: 10px;">
+              
+              <!-- Título principal -->
+              <h2 class="u-align-center u-text u-text-1" style="margin-bottom: 20px; font-size: 2.3rem; line-height: 1.2; color: #fff;">
+                Asesoría Empresarial para la Viabilidad de Proyectos
+              </h2>
+              
+              <!-- Descripción -->
+              <p class="u-align-center u-text u-text-2" style="max-width: 900px; margin: 0 auto 30px auto; font-size: 1rem; line-height: 1.6; padding: 0 20px; color: #ccc;">
+                Ofrecemos asesorías personalizadas a empresas de diversos sectores para evaluar la viabilidad de sus proyectos y garantizar el éxito de sus negocios. Utilizamos herramientas tecnológicas avanzadas que optimizan los tiempos de respuesta y facilitan la toma de decisiones basadas en datos precisos, alineados con los informes establecidos.
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Imágenes de clientes/proyectos -->
+    <div style="display: flex; justify-content: center; align-items: flex-start; gap: 40px; flex-wrap: wrap; padding: 20px 20px 40px 20px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
+      
+      <!-- Cliente 1 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <div style="width: 320px; height: 320px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; background: url('images/cannavis.jpg') center/cover;">
+        </div>
+        <h3 style="font-size: 1.3rem; font-weight: 600; color: #ffffff; text-align: center; margin: 0; padding: 0 10px;">Sector Cannabis</h3>
+      </div>
+      
+      <!-- Cliente 2 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <div style="width: 320px; height: 320px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; background: url('images/ventiladores.jpg') center/cover;">
+        </div>
+        <h3 style="font-size: 1.3rem; font-weight: 600; color: #ffffff; text-align: center; margin: 0; padding: 0 10px;">Sector Industrial</h3>
+      </div>
+      
+      <!-- Cliente 3 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <div style="width: 320px; height: 320px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; background: url('images/transporte.jpg') center/cover;">
+        </div>
+        <h3 style="font-size: 1.3rem; font-weight: 600; color: #ffffff; text-align: center; margin: 0; padding: 0 10px;">Sector Construcción</h3>
+      </div>
+      
+    </div>
+    
+  </section>
+
+  <!-- ========================================
+       SECCIÓN 5: CONTACTO (de contacto5.html)
+       ======================================== -->
+  <section class="u-clearfix u-custom-color-1 u-valign-middle-lg u-section-contacto" id="contacto-section" style="padding: 80px 20px;">
+    <div class="u-clearfix u-sheet u-sheet-contacto">
+      <div class="data-layout-selected u-clearfix u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gutter-30 u-layout-wrap u-layout-wrap-contacto">
+        <div class="u-layout">
+          <div class="u-layout-col">
+            <div class="u-size-60">
+              <div class="u-layout-row-contacto">
+                
+                <!-- Imagen decorativa con hover -->
+                <div style="flex: 0 0 45%; min-width: 450px; max-width: 550px; height: 650px; min-height: 650px; background: url('images/asistente.jpg') center/cover; border-radius: 20px; position: relative; overflow: hidden;" 
+                     data-animation-name="flipIn" 
+                     data-animation-duration="1000" 
+                     data-animation-delay="0" 
+                     data-animation-direction="X">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); opacity: 1; transition: opacity 0.3s;"></div>
+                </div>
+                
+                <!-- Información de contacto y formulario -->
+                <div class="skrollable u-layout-cell-contacto-2" style="flex: 0 0 55%; min-width: 500px; max-width: 700px;">
+                  <div class="u-container-layout-contacto">
+                    
+                    <!-- Títulos -->
+                    <h5 class="u-align-left u-text u-text-default u-text-contacto-1" style="color: #fff;">El Futuro de tu Negocio</h5>
+                    <h4 class="u-align-left u-text u-text-contacto-2" style="color: #fff;">Agenda tu Consulta Gratuita</h4>
+                    
+                    <!-- Información de contacto -->
+                    <p class="u-align-left u-text u-text-contacto-3" style="color: #ccc;">
+                      <strong style="color: #fff;">Diego Amaris</strong> - Especialista Financiero<br>
+                      📱 WhatsApp: +57 314 275 4461<br>
+                      📧 Email: <font color="#ee572c">diegoamarisreal123@gmail.com</font><br>
+                      📍 Bogotá, Colombia<br>
+                      🕐 Lun-Vie: 8:00 AM - 6:00 PM<br><br>
+                      <em style="color: #f06e49;">Respuesta garantizada en menos de 24 horas</em>
+                    </p>
+                    
+                    <!-- FORMULARIO DE CONTACTO -->
+                    <form id="contact-form" 
+                          style="max-width:100%;margin:auto;background:#131622;padding:20px;border-radius:15px;" 
+                          aria-labelledby="contact-title">
+                      
+                      <h3 id="contact-title" style="color:#fff;margin-top:0;">Contacto</h3>
+                      
+                      <!-- Nombre y Teléfono -->
+                      <div style="display: flex; gap: 10px; margin-bottom:10px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 200px;">
+                          <label for="your-name" style="color:#fff;">Nombre</label>
+                          <input type="text" 
+                                 name="your-name" 
+                                 id="Nombre" 
+                                 placeholder="Ingresa tu nombre" 
+                                 required 
+                                 class="u-border-none u-input u-input-rectangle u-radius u-input-1" 
+                                 style="width:100%; padding: 10px; font-size: 0.9rem; background: #1a1d2e; color: #fff; border: 1px solid #2a2d3a; border-radius: 8px;">
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                          <label for="your-number" style="color:#fff;">Número</label>
+                          <input type="tel" 
+                                 name="your-telephone" 
+                                 id="Telefono" 
+                                 placeholder="Ingresa tu teléfono" 
+                                 required 
+                                 class="u-border-none u-input u-input-rectangle u-radius u-input-2" 
+                                 style="width:100%; padding: 10px; font-size: 0.9rem; background: #1a1d2e; color: #fff; border: 1px solid #2a2d3a; border-radius: 8px;" 
+                                 pattern="[0-9\s+()-]{7,}" 
+                                 inputmode="tel">
+                        </div>
+                      </div>
+                      
+                      <!-- Email -->
+                      <div style="margin-bottom:10px;">
+                        <label for="your-email" style="color:#fff;">Email</label>
+                        <input type="email" 
+                               name="your-email" 
+                               id="correo" 
+                               placeholder="Ingresa tu correo" 
+                               required 
+                               class="u-border-none u-input u-input-rectangle u-radius u-input-3" 
+                               style="width:100%; padding: 10px; font-size: 0.9rem; background: #1a1d2e; color: #fff; border: 1px solid #2a2d3a; border-radius: 8px;">
+                      </div>
+                      
+                      <!-- Mensaje -->
+                      <div style="margin-bottom:10px;">
+                        <label for="message" style="color:#fff;">Mensaje</label>
+                        <textarea name="message" 
+                                  id="mensaje" 
+                                  placeholder="Describe tu consulta o proyecto" 
+                                  required 
+                                  class="u-border-none u-input u-input-rectangle u-radius u-input-4" 
+                                  style="width:100%; min-height: 80px; max-height: 100px; padding: 10px; font-size: 0.9rem; background: #1a1d2e; color: #fff; border: 1px solid #2a2d3a; border-radius: 8px; resize: vertical;"></textarea>
+                      </div>
+                      
+                      <!-- Campo honeypot (anti-spam) -->
+                      <input type="text" 
+                             name="hp_field" 
+                             id="hp_field" 
+                             autocomplete="off" 
+                             tabindex="-1" 
+                             style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" 
+                             aria-hidden="true">
+                      
+                      <!-- Botón de envío -->
+                      <button type="submit" 
+                              class="u-btn u-btn-submit u-button-style" 
+                              id="submit-btn" 
+                              style="background:#f6b8a7;color:#222; padding: 12px 30px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                        Enviar
+                      </button>
+                      
+                      <!-- Estado del formulario -->
+                      <div id="form-status" 
+                           style="margin-top:10px; color:#fff;" 
+                           aria-live="polite" 
+                           role="status"></div>
+                      
+                      <!-- Política de privacidad -->
+                      <p style="color:#bbb;font-size:12px;margin-top:10px;">
+                        Al enviar aceptas el tratamiento de tus datos según nuestra política de privacidad.
+                      </p>
+                    </form>
+                    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========================================
+     SCRIPTS - FUNCIONALIDAD Y EFECTOS
+     ======================================== -->
+
+<!-- Script principal externo -->
+<script src="js/main.js"></script>
+
+<!-- Scripts inline para efectos visuales y formulario -->
+<script>
+  // ========================================
+  // GRID OVERLAY - Efecto de cuadrícula moderna
+  // ========================================
+  const gridOverlay = document.createElement('div');
+  gridOverlay.className = 'grid-modern-overlay';
+  document.body.appendChild(gridOverlay);
+
+  // ========================================
+  // PARTÍCULAS FLOTANTES - Efecto visual de fondo
+  // ========================================
+  function createParticles() {
+      const container = document.createElement('div');
+      container.id = 'particles-modern';
+      document.body.insertBefore(container, document.body.firstChild);
+      
+      // Crear 15 partículas con propiedades aleatorias
+      for (let i = 0; i < 15; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle-modern';
+          
+          // Tamaño aleatorio entre 3px y 9px
+          particle.style.width = Math.random() * 6 + 3 + 'px';
+          particle.style.height = particle.style.width;
+          
+          // Posición horizontal aleatoria
+          particle.style.left = Math.random() * 100 + '%';
+          
+          // Animación con delay y duración aleatorios
+          particle.style.animationDelay = Math.random() * 20 + 's';
+          particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+          
+          container.appendChild(particle);
+      }
+  }
+  
+  // Inicializar partículas
+  createParticles();
+
+  // ========================================
+  // HEADER SCROLL EFFECT - Header fijo con efecto al scroll
+  // ========================================
+  let lastScrollTop = 0;
+  
+  window.addEventListener('scroll', function() {
+      const header = document.querySelector('.u-header');
+      if (!header) return;
+      
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Mantener header fijo
+      header.style.position = 'fixed';
+      header.style.top = '0';
+      header.style.width = '100%';
+      header.style.zIndex = '9999';
+      
+      // Agregar clase cuando se hace scroll
+      if (scrollTop > 50) {
+          header.classList.add('scrolled');
+      } else {
+          header.classList.remove('scrolled');
+      }
+      
+      lastScrollTop = scrollTop;
+  });
+
+  // ========================================
+  // HEADER INICIAL - Configurar header al cargar página
+  // ========================================
+  window.addEventListener('load', function() {
+      const header = document.querySelector('.u-header');
+      if (header) {
+          header.style.position = 'fixed';
+          header.style.top = '0';
+          header.style.width = '100%';
+          header.style.zIndex = '9999';
+      }
+  });
+
+  // ========================================
+  // CAROUSEL FUNCTIONALITY - Carrusel de servicios
+  // ========================================
+  const container = document.getElementById('serviceCardsContainer');
+  const dotsContainer = document.getElementById('carouselDots');
+  let currentServiceIndex = 0;
+  const totalServices = 7; // 1 grid + 6 detalles
+
+  // Crear indicadores
+  for (let i = 0; i < totalServices; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'carousel-dot';
+    if (i === 0) dot.classList.add('active');
+    dot.onclick = () => scrollToService(i);
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateDots() {
+    const scrollLeft = container.scrollLeft;
+    const cardWidth = container.children[0].offsetWidth;
+    currentServiceIndex = Math.round(scrollLeft / cardWidth);
+    
+    document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentServiceIndex);
+    });
+  }
+
+  function scrollToService(index) {
+    const cardWidth = container.children[0].offsetWidth;
+    container.scrollTo({
+      left: cardWidth * index,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollToNextService() {
+    if (currentServiceIndex < totalServices - 1) {
+      scrollToService(currentServiceIndex + 1);
+    }
+  }
+
+  function scrollToPrevService() {
+    if (currentServiceIndex > 0) {
+      scrollToService(currentServiceIndex - 1);
+    }
+  }
+
+  // Actualizar indicadores al hacer scroll
+  container.addEventListener('scroll', updateDots);
+
+  // Soporte para gestos táctiles
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  container.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  container.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchStartX - touchEndX > swipeThreshold) {
+      scrollToNextService();
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+      scrollToPrevService();
+    }
+  }
+
+  // Ajustar al cambiar el tamaño de la ventana
+  window.addEventListener('resize', () => {
+    scrollToService(currentServiceIndex);
+  });
+
+  // ========================================
+  // FORMULARIO DE CONTACTO - Envío a Google Sheets
+  // ========================================
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwfokrwAUZWmVF6SJ2CP8YlfC5Dwv35ZN-Osk6_9H8_6ZGtspX-5j3Yy4Q5j0B3uu8U/exec';
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Verificar honeypot (anti-spam)
+    const hp = document.getElementById('hp_field');
+    if (hp && hp.value) {
+      statusEl.innerText = 'Error al enviar. Intenta de nuevo.';
+      return;
+    }
+    
+    const formData = new FormData(form);
+
+    // Deshabilitar botón durante el envío
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    // Enviar datos a Google Sheets
+    fetch(scriptURL, { method: 'POST', body: formData })
+      .then(response => {
+        statusEl.innerText = '¡Mensaje enviado!';
+        statusEl.style.color = '#4CAF50';
+        form.reset();
+      })
+      .catch(error => {
+        statusEl.innerText = 'Error al enviar. Intenta de nuevo.';
+        statusEl.style.color = '#f44336';
+      })
+      .finally(() => {
+        // Rehabilitar botón
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar';
+      });
+  });
+
+  // ========================================
+  // SMOOTH SCROLL - Navegación suave
+  // ========================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && href !== '#0') {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+
+  // ========================================
+  // HOVER EFFECTS - Efectos interactivos
+  // ========================================
+  // Blog cards hover
+  document.querySelectorAll('article').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-5px)';
+      this.style.borderColor = '#f06e49';
+      this.style.boxShadow = '0 8px 25px rgba(240, 110, 73, 0.15)';
+      const img = this.querySelector('img');
+      if (img) img.style.transform = 'scale(1.08)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+      this.style.borderColor = '#2a2d3a';
+      this.style.boxShadow = 'none';
+      const img = this.querySelector('img');
+      if (img) img.style.transform = 'scale(1)';
+    });
+  });
+
+  // Botón "Ver Todos los Artículos" hover
+  const verTodosBtn = document.querySelector('#blog-section a[href="blog.html"]');
+  if (verTodosBtn) {
+    verTodosBtn.addEventListener('mouseenter', function() {
+      this.style.background = '#f06e49';
+      this.style.color = '#fff';
+      this.style.transform = 'translateY(-2px)';
+      this.style.boxShadow = '0 8px 20px rgba(240, 110, 73, 0.4)';
+    });
+    
+    verTodosBtn.addEventListener('mouseleave', function() {
+      this.style.background = 'transparent';
+      this.style.color = '#f06e49';
+      this.style.transform = 'translateY(0)';
+      this.style.boxShadow = 'none';
+    });
+  }
+
+  // Clientes images hover
+  document.querySelectorAll('#clientes-section > div > div > div').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-10px)';
+      this.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.5)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+      this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+    });
+  });
+
+  // ========================================
+  // RESPONSIVE ADJUSTMENTS - Ajustes móviles
+  // ========================================
+  function adjustForMobile() {
+    const width = window.innerWidth;
+    
+    if (width <= 768) {
+      // Ajustes para móvil
+      const contactLayout = document.querySelector('.u-layout-row-contacto');
+      if (contactLayout) {
+        contactLayout.style.flexWrap = 'wrap';
+      }
+      
+      const images = document.querySelectorAll('.u-image-contacto');
+      images.forEach(img => {
+        img.style.minWidth = '100%';
+        img.style.height = '400px';
+      });
+    }
+  }
+
+  window.addEventListener('resize', adjustForMobile);
+  window.addEventListener('load', adjustForMobile);
+
+  console.log('✅ Index One-Page Completo cargado correctamente');
+</script>
+<script>
+// ====================
+// CONTROLES DEL CARRUSEL DE SERVICIOS
+// ====================
+
+const carousel = document.querySelector('.service-cards-container');
+const btnLeft = document.querySelector('#carousel-left');
+const btnRight = document.querySelector('#carousel-right');
+
+if (carousel && btnLeft && btnRight) {
+
+    btnLeft.addEventListener('click', () => {
+        carousel.scrollBy({
+            left: -carousel.clientWidth,
+            behavior: 'smooth'
+        });
+    });
+
+    btnRight.addEventListener('click', () => {
+        carousel.scrollBy({
+            left: carousel.clientWidth,
+            behavior: 'smooth'
+        });
+    });
+
+}
+</script>
+
+</body>
+</html>

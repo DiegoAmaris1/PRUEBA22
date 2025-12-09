@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="algoritmos financieros, toma de decisiones, machine learning, análisis de datos, optimización financiera">
+    <meta name="description" content="Descubre cómo los algoritmos inteligentes están transformando la toma de decisiones financieras en las empresas modernas.">
+    <title>Algoritmos para la Toma de Decisiones Financieras - Blog Diego Amaris</title>
+    
+    <!-- RUTAS CORREGIDAS PARA CSS -->
+    <link rel="stylesheet" href="../css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="../css/Post-Template.css" media="screen">
+    <link rel="stylesheet" href="../css/index.css" media="screen">
+    <link rel="stylesheet" href="../css/audio-reader.css">
+    
+    <!-- RUTAS CORREGIDAS PARA JS -->
+    <script class="u-script" type="text/javascript" src="../js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../js/nicepage.js" defer=""></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    <meta name="theme-color" content="#f06e49">
+    <style>
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .article-header {
+            margin-bottom: 40px;
+        }
+        .article-category {
+            display: inline-block;
+            background: #f06e49;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .article-title {
+            color: #fff;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 20px 0;
+        }
+        .article-meta {
+            color: #a0a0a0;
+            font-size: 16px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            padding: 20px 0;
+            border-top: 1px solid #2a2d3e;
+            border-bottom: 1px solid #2a2d3e;
+        }
+        .article-featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .article-content {
+            color: #e0e0e0;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        .article-content h2 {
+            color: #fff;
+            font-size: 32px;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f06e49;
+        }
+        .article-content h3 {
+            color: #fff;
+            font-size: 24px;
+            margin: 30px 0 15px;
+        }
+        .article-content p {
+            margin: 20px 0;
+        }
+        .article-content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        .article-content li {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: linear-gradient(135deg, #1a1d2e 0%, #252a42 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #f06e49;
+        }
+        .info-box-title {
+            color: #f06e49;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #f06e49 0%, #ff8a6b 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px 0;
+        }
+        .cta-box h3 {
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .cta-button {
+            background: #fff;
+            color: #f06e49;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #f06e49;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            background: #1a1d2e;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .share-btn:hover {
+            background: #f06e49;
+        }
+    </style>
+</head>
+<body data-path-to-root="./" data-include-products="false" class="u-black u-body u-xl-mode" data-lang="es">
+    
+    <header class="u-clearfix u-header u-shading u-sticky u-sticky-f57f u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-header" id="sec-2819">
+        <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+            <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation">
+                <div class="menu-collapse" style="font-size: 1.125rem; letter-spacing: 0px; font-weight: 700;">
+                    <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+                        <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
+                        <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                            <g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect></g>
+                        </svg>
+                    </a>
+                </div>
+                <div class="u-custom-menu u-nav-container">
+                    <ul role="menubar" class="u-nav u-unstyled u-nav-1">
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html" style="padding: 10px 36px;">Inicio</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html#sec-7e2e" style="padding: 10px 36px;">Empresa</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html#carousel-1c6a" style="padding: 10px 36px;">Servicios</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../blog.html" style="padding: 10px 36px;">Blog</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html#sec-ea29" style="padding: 10px 36px;">Contactos</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <article class="article-container">
+            <a href="../blog.html" class="back-to-blog">← Volver al Blog</a>
+
+            <header class="article-header">
+                <span class="article-category">Procesamiento de Datos</span>
+                <h1 class="article-title">Extracción y Organización de Datos con IA</h1>
+                <div class="article-meta">
+                    <span>📅 Diciembre 2024</span>
+                    <span>✍️ Diego Amaris</span>
+                    <span>⏱️ 9 min de lectura</span>
+                </div>
+            </header>
+
+            <img src="../images/8ad73f3c.jpeg" alt="Inteligencia artificial procesando documentos financieros" class="article-featured-image">
+
+            <div class="share-buttons">
+                <a href="#" class="share-btn" onclick="shareOnWhatsApp(); return false;">📱 WhatsApp</a>
+                <a href="#" class="share-btn" onclick="shareOnLinkedIn(); return false;">💼 LinkedIn</a>
+                <a href="#" class="share-btn" onclick="shareOnTwitter(); return false;">🦋 Twitter</a>
+            </div>
+
+            <div class="article-content">
+                
+                <p style="font-size: 20px; font-weight: 500; color: #f0f0f0;">
+                    Cada día, tu empresa recibe decenas o cientos de documentos: facturas, contratos, órdenes de compra, extractos bancarios, comprobantes de pago. Toda esa información valiosa está atrapada en documentos no estructurados, requiriendo horas de trabajo manual para convertirla en datos utilizables. La IA cambia radicalmente este panorama.
+                </p>
+
+                <p>
+                    Las tecnologías de extracción inteligente de datos procesan documentos en segundos, extraen información con precisión superior al 95%, y la organizan automáticamente en sistemas estructurados listos para análisis. El resultado: menos errores, mayor velocidad, y equipos enfocados en decisiones, no en digitación.
+                </p>
+
+                <h2>1. El Desafío: Datos Atrapados en Documentos</h2>
+                
+                <p>
+                    Las organizaciones enfrentan un problema masivo de datos no estructurados:
+                </p>
+
+                <ul>
+                    <li><strong>Facturas en múltiples formatos:</strong> PDF, imágenes, correos electrónicos, portales de proveedores</li>
+                    <li><strong>Información inconsistente:</strong> Cada proveedor estructura sus documentos diferente</li>
+                    <li><strong>Volumen creciente:</strong> El número de transacciones aumenta más rápido que la capacidad de procesarlas</li>
+                    <li><strong>Errores costosos:</strong> La digitación manual introduce errores en 1-3% de casos, causando problemas downstream</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-box-title">💡 El Problema en Números</div>
+                    <p style="margin: 0; color: #e0e0e0;">
+                        Una empresa mediana procesa 500+ facturas mensuales. A 10 minutos por factura, son 83 horas de trabajo manual. La IA reduce esto a menos de 5 horas totales, liberando 78 horas mensuales.
+                    </p>
+                </div>
+
+                <h2>2. Tecnologías de Extracción Inteligente</h2>
+
+                <h3>OCR Tradicional vs OCR Inteligente</h3>
+                <p>
+                    El OCR (Optical Character Recognition) tradicional simplemente convierte imágenes en texto, pero no entiende qué significan esos datos. El OCR inteligente, potenciado por IA, va mucho más allá:
+                </p>
+
+                <ul>
+                    <li>Identifica el tipo de documento automáticamente</li>
+                    <li>Reconoce campos relevantes sin templates predefinidos</li>
+                    <li>Extrae relaciones entre datos (por ejemplo, que un subtotal + IVA = total)</li>
+                    <li>Valida coherencia matemática y lógica</li>
+                    <li>Aprende de correcciones para mejorar continuamente</li>
+                </ul>
+
+                <h3>NLP para Documentos Financieros</h3>
+                <p>
+                    El procesamiento de lenguaje natural permite que sistemas entiendan contexto y significado. Esto es crítico para:
+                </p>
+
+                <ul>
+                    <li>Extraer cláusulas específicas de contratos</li>
+                    <li>Identificar términos de pago en órdenes de compra</li>
+                    <li>Clasificar gastos según descripciones en lenguaje natural</li>
+                    <li>Detectar inconsistencias entre campos relacionados</li>
+                </ul>
+
+                <h3>Computer Vision para Tablas y Formularios</h3>
+                <p>
+                    Algoritmos de visión por computadora entienden la estructura visual de documentos, permitiendo extraer información de:
+                </p>
+
+                <ul>
+                    <li>Tablas complejas con múltiples filas y columnas</li>
+                    <li>Formularios con casillas de verificación y campos opcionales</li>
+                    <li>Documentos multi-página con información dispersa</li>
+                    <li>Imágenes de baja calidad o con rotación/inclinación</li>
+                </ul>
+
+                <h2>3. Proceso de Extracción y Organización</h2>
+
+                <h3>Fase 1: Recepción de Documentos</h3>
+                <p>
+                    Los documentos pueden llegar por múltiples canales: correo electrónico, upload web, fotografía desde celular, API de proveedores, EDI. El sistema centraliza todo en una única cola de procesamiento.
+                </p>
+
+                <h3>Fase 2: Clasificación Automática</h3>
+                <p>
+                    La IA identifica el tipo de documento en segundos: ¿Es una factura? ¿Orden de compra? ¿Contrato? ¿Extracto bancario? Esto determina qué información extraer y cómo procesarla.
+                </p>
+
+                <h3>Fase 3: Extracción de Datos</h3>
+                <p>
+                    El sistema identifica y extrae campos relevantes. Para una factura, esto incluye:
+                </p>
+
+                <ul>
+                    <li>Información del proveedor: razón social, NIT, dirección, contacto</li>
+                    <li>Información del documento: número, fecha, vencimiento</li>
+                    <li>Detalle de líneas: descripción, cantidad, precio unitario, subtotal</li>
+                    <li>Totales: subtotal, impuestos, retenciones, total a pagar</li>
+                    <li>Información bancaria: cuenta, entidad, referencia de pago</li>
+                </ul>
+
+                <h3>Fase 4: Validación y Enriquecimiento</h3>
+                <p>
+                    El sistema valida coherencia de datos extraídos:
+                </p>
+
+                <ul>
+                    <li>¿Los subtotales suman correctamente?</li>
+                    <li>¿El IVA está calculado con la tarifa correcta?</li>
+                    <li>¿El NIT existe y corresponde al proveedor declarado?</li>
+                    <li>¿La fecha de vencimiento es posterior a la fecha de emisión?</li>
+                </ul>
+
+                <p>
+                    Además, enriquece con información de sistemas internos: categoría contable del proveedor, centro de costos asignado, términos de pago negociados.
+                </p>
+
+                <h3>Fase 5: Estructuración y Almacenamiento</h3>
+                <p>
+                    Los datos extraídos se estructuran en formato estándar (JSON, XML, base de datos) listos para ser consumidos por sistemas downstream: ERP, contabilidad, tesorería, análisis.
+                </p>
+
+                <h3>Fase 6: Revisión por Excepción</h3>
+                <p>
+                    Solo documentos con baja confianza o validaciones fallidas van a revisión humana. El 80-90% se procesa completamente automático, el 10-20% restante recibe revisión humana enfocada.
+                </p>
+
+                <h2>4. Casos de Uso por Tipo de Documento</h2>
+
+                <h3>Facturas de Proveedores</h3>
+                <p>
+                    <strong>Desafío:</strong> Múltiples formatos, idiomas, estructuras. Algunos proveedores envían PDFs nativos, otros escaneos de baja calidad.
+                </p>
+
+                <p>
+                    <strong>Solución IA:</strong> Modelos pre-entrenados en millones de facturas reconocen patrones comunes y se adaptan a variaciones específicas. Precisión típica: 95-98%.
+                </p>
+
+                <div class="info-box">
+                    <div class="info-box-title">⏱️ Impacto Real</div>
+                    <p style="margin: 0; color: #e0e0e0;">
+                        Tiempo de procesamiento manual: 10-15 minutos por factura. Con IA: 30 segundos. Para 500 facturas mensuales, esto libera 75+ horas de trabajo.
+                    </p>
+                </div>
+
+                <h3>Extractos Bancarios</h3>
+                <p>
+                    <strong>Desafío:</strong> Formatos propietarios de cada banco, tablas complejas, información dispersa en múltiples páginas.
+                </p>
+
+                <p>
+                    <strong>Solución IA:</strong> Computer vision identifica la estructura tabular y extrae cada transacción con sus atributos: fecha, descripción, débito/crédito, saldo. Se integra directamente al sistema contable para conciliación automática.
+                </p>
+
+                <h3>Comprobantes de Gastos</h3>
+                <p>
+                    <strong>Desafío:</strong> Tiquetes de taxi, recibos de restaurantes, facturas de hoteles - todos en formatos diferentes, a menudo de baja calidad (fotografías tomadas con celular).
+                </p>
+
+                <p>
+                    <strong>Solución IA:</strong> Modelos robustos procesan imágenes imperfectas, extraen datos clave (fecha, monto, comercio, concepto) y clasifican automáticamente según políticas de gastos corporativos.
+                </p>
+
+                <h3>Contratos y Acuerdos</h3>
+                <p>
+                    <strong>Desafío:</strong> Documentos largos con lenguaje legal complejo. La información crítica (montos, plazos, cláusulas de renovación) está dispersa en páginas de texto.
+                </p>
+
+                <p>
+                    <strong>Solución IA:</strong> NLP identifica cláusulas específicas, extrae términos financieros, y alerta sobre fechas críticas (vencimientos, renovaciones automáticas, fechas de pago).
+                </p>
+
+                <h2>5. Implementación: Caso de Estudio</h2>
+
+                <p>
+                    <strong>Empresa:</strong> Importadora y distribuidora, 1,200 facturas mensuales de 300+ proveedores<br>
+                    <strong>Situación inicial:</strong> 3 personas dedicadas tiempo completo a procesar facturas, backlog de 2 semanas, 5% de errores causando problemas con proveedores.
+                </p>
+
+                <p>
+                    <strong>Solución implementada:</strong>
+                </p>
+
+                <ul>
+                    <li>Plataforma Mindee para OCR inteligente de facturas</li>
+                    <li>Integración con Zapier para flujos automatizados</li>
+                    <li>Conexión directa a Siigo para registro contable</li>
+                    <li>Dashboard de monitoreo en Power BI</li>
+                </ul>
+
+                <p>
+                    <strong>Proceso automatizado:</strong>
+                </p>
+
+                <ul>
+                    <li>Factura llega por email → Zapier la captura automáticamente</li>
+                    <li>Mindee extrae datos en 15 segundos</li>
+                    <li>Sistema valida contra órdenes de compra y recepción de mercancía</li>
+                    <li>Si todo coincide → registro automático en Siigo</li>
+                    <li>Si hay discrepancias → alerta al equipo con detalles específicos</li>
+                    <li>Dashboard muestra estado en tiempo real</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-box-title">📊 Resultados en 4 Meses</div>
+                    <ul style="margin: 10px 0 0 0; padding-left: 20px;">
+                        <li>Procesamiento automático: 92% de facturas (1,104 de 1,200)</li>
+                        <li>Tiempo de procesamiento: de 2 semanas a 24 horas</li>
+                        <li>Errores reducidos: de 5% a 0.3%</li>
+                        <li>Equipo reducido: de 3 a 1 persona (enfocada en excepciones)</li>
+                        <li>Ahorro anual: $95M COP en costos de personal</li>
+                        <li>Beneficio adicional: mejores términos con proveedores por pagos oportunos</li>
+                        <li>ROI: 520% en el primer año</li>
+                    </ul>
+                </div>
+
+                <h2>6. Herramientas y Plataformas</h2>
+
+                <h3>Soluciones Especializadas</h3>
+                <ul>
+                    <li><strong>Mindee:</strong> API especializada en documentos financieros, excelente precisión en facturas</li>
+                    <li><strong>Rossum:</strong> Plataforma completa de procesamiento inteligente de documentos</li>
+                    <li><strong>Google Document AI:</strong> Suite de APIs de Google para diversos tipos de documentos</li>
+                    <li><strong>AWS Textract:</strong> Servicio de Amazon para extracción de texto y datos de documentos</li>
+                    <li><strong>Azure Form Recognizer:</strong> Herramienta de Microsoft para formularios y facturas</li>
+                </ul>
+
+                <h3>Soluciones Todo-en-Uno</h3>
+                <ul>
+                    <li><strong>UiPath Document Understanding:</strong> Capacidades de IDP integradas en plataforma RPA</li>
+                    <li><strong>Automation Anywhere IQ Bot:</strong> Bot cognitivo para procesamiento inteligente</li>
+                    <li><strong>ABBYY FlexiCapture:</strong> Solución empresarial madura con amplio soporte de idiomas</li>
+                </ul>
+
+                <h3>Herramientas Open Source</h3>
+                <ul>
+                    <li><strong>Tesseract OCR:</strong> Motor OCR gratuito, requiere procesamiento adicional para extraer estructura</li>
+                    <li><strong>Apache PDFBox:</strong> Biblioteca para extraer texto y metadatos de PDFs</li>
+                    <li><strong>Tabula:</strong> Herramienta especializada en extracción de tablas de PDFs</li>
+                </ul>
+
+                <h2>7. Mejores Prácticas de Implementación</h2>
+
+                <h3>Comienza con un Tipo de Documento</h3>
+                <p>
+                    No intentes automatizar todo simultáneamente. Selecciona el tipo de documento más problemático (usualmente facturas) y perfecciona el proceso antes de expandir.
+                </p>
+
+                <h3>Prioriza Calidad sobre Automatización Completa</h3>
+                <p>
+                    Es mejor procesar automáticamente 90% con 98% de precisión, que procesar 100% con 85% de precisión. Errores downstream son costosos.
+                </p>
+
+                <h3>Implementa Revisión por Excepción</h3>
+                <p>
+                    Diseña flujos donde solo casos problemáticos van a revisión humana. Esto maximiza eficiencia sin sacrificar precisión.
+                </p>
+
+                <h3>Monitorea y Ajusta Continuamente</h3>
+                <p>
+                    Establece métricas claras: tasa de procesamiento automático, precisión por tipo de documento, tiempo promedio de procesamiento. Revisa semanalmente y ajusta.
+                </p>
+
+                <h3>Entrena con Tus Datos</h3>
+                <p>
+                    Muchas plataformas permiten reentrenar modelos con tus documentos específicos. Invierte tiempo inicial en etiquetar ejemplos para mejorar precisión.
+                </p>
+
+                <h2>8. Futuro de la Extracción Inteligente</h2>
+
+                <p>
+                    Las tecnologías emergentes prometen capacidades aún más avanzadas:
+                </p>
+
+                <ul>
+                    <li><strong>Modelos multimodales:</strong> Combinan texto, imágenes y estructura para comprensión más profunda</li>
+                    <li><strong>Zero-shot learning:</strong> Modelos que extraen información de documentos nunca vistos sin entrenamiento específico</li>
+                    <li><strong>Extracción conversacional:</strong> Sistemas que permiten hacer preguntas en lenguaje natural sobre documentos</li>
+                    <li><strong>Validación cruzada automática:</strong> IA que compara información entre múltiples documentos para detectar inconsistencias</li>
+                    <li><strong>Predicción de campos faltantes:</strong> Algoritmos que infieren información no explícita en documentos</li>
+                </ul>
+
+                <h2>Conclusión</h2>
+
+                <p>
+                    La extracción y organización inteligente de datos transforma radicalmente la productividad empresarial. Lo que antes requería horas de trabajo manual ahora ocurre en segundos con mayor precisión.
+                </p>
+
+                <p>
+                    La tecnología está madura, accesible y comprobada. Miles de empresas globalmente procesan millones de documentos diariamente con estas herramientas, liberando equipos humanos para enfocarse en análisis, decisiones y relaciones, no en digitación.
+                </p>
+
+                <p>
+                    El costo de no adoptar estas tecnologías es cada vez mayor: ineficiencia operativa, costos crecientes de personal, errores costosos, y pérdida de competitividad frente a organizaciones más ágiles. La pregunta no es si implementar extracción inteligente de datos, sino qué tan rápido puedes hacerlo.
+                </p>
+
+            </div>
+
+            <div class="cta-box">
+                <h3>¿Listo para Automatizar la Extracción de Datos?</h3>
+                <p>Agenda una consulta y descubre cómo transformar tus documentos en datos estructurados automáticamente.</p>
+                <a href="../index.html#sec-ea29" class="cta-button">Agendar Consulta Gratuita</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="u-align-center u-clearfix u-container-align-center u-footer u-grey-80 u-footer" id="sec-034c">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <p style="color: #a0a0a0; margin: 10px 0;">© 2024 Diego Amaris - Consultoría Contable y Financiera</p>
+            <p style="color: #666;">
+                <a href="../index.html#sec-ea29" style="color: #f06e49; text-decoration: none;">Contacto</a> | 
+<a href="mailto:diegoamarisreal123@gmail.com" style="color: #f06e49; text-decoration: none;">Email</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function shareOnWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Extracción y Organización de Datos con IA');
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Extracción y Organización de Datos con IA');
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+    </script>
+    <!-- Sistema de lectura por voz -->
+    <script src="../js/audio-reader.js"></script>
+</body>
+</html>
